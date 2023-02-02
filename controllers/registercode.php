@@ -18,7 +18,17 @@ if (isset($_POST['register_btn'])) {
     $active = $_POST['active'] == true ? 1 : '0';
     if($password == $confirm_password){
         //Check Email
-        $check_email = "";
+        $check_email = "SELECT * FROM users WHERE email = '$email'";
+        $check_email_run = mysqli_query($con,$check_email);
+        if(mysqli_num_rows($check_email_run)>0){
+            //มีอีเมลล์ใช้แล้ว
+            $_SESSION['message'] = 'อีเมลล์นี้ถูกใช้แล้ว';
+            print("อีเมลล์นี้ถูกใช้แล้ว");
+            header('Location: ../register.php');
+            exit(0);
+        }else{
+            $query = "";
+        }
     }
     else{
         $_SESSION['message'] = 'รหัสผ่านไม่ตรงกัน';
