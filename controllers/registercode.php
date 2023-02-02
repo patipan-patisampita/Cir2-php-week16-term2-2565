@@ -16,6 +16,21 @@ if (isset($_POST['register_btn'])) {
     $filename = time() . '.' . $photo_extension;
 
     $active = $_POST['active'] == true ? 1 : '0';
+    if($password == $confirm_password){
+        //Check Email
+        $check_email = "";
+    }
+    else{
+        $_SESSION['message'] = 'รหัสผ่านไม่ตรงกัน';
+        print("รหัสผ่านไม่ตรงกัน");
+        header('Location: ../register.php');
+        exit(0);
+    }
+
 } else {
+    $_SESSION['message'] = 'ข้อมูลส่งมามีปัญหา';
+    print('ข้อมูลส่งมามีปัญหา');
+    header('Location: ../register.php');
+    exit(0);
 }
 ?>
