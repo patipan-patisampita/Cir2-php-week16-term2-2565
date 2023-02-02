@@ -7,7 +7,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
-                
+
             <?php include_once('message.php'); ?>
 
                 <div class="card-header" style="background-color:#9910DD">
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="controllers/logincode.php" method="post">
                         <div class="mb-3">
                             <label class="fs-5">อีเมลล์</label>
                             <input type="text" name="email" class="form-control" required placeholder="Enter Your Email">
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn text-white" style="background-color:#9910DD">เข้าสู่ระบบ</button>
+                            <button type="submit" name="login_btn" class="btn text-white" style="background-color:#9910DD">เข้าสู่ระบบ</button>
                         </div>
                     </form>
                 </div>
