@@ -37,7 +37,7 @@ if (isset($_POST['register_btn'])) {
                 move_uploaded_file($_FILES['photo']['tmp_name'],'../upload/users/'.$filename);
                 $_SESSION['message'] = 'ลงทะเบียนเรียบร้อยแล้ว';
                 print("ลงทะเบียนเรียบร้อยแล้ว");
-                header('Location: ../register.php');
+                header('Location: ../login.php');
                 exit(0);
             }else{
                 $_SESSION['message'] = 'ลงทะเบียนไม่ผ่าน';
