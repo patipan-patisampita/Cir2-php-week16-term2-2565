@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include_once("includes/header.php"); ?>
 <?php include_once("includes/navbar.php"); ?>
 
@@ -5,6 +7,9 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card shadow">
+                
+            <?php include_once('message.php'); ?>
+
                 <div class="card-header" style="background-color:#9910DD">
                     <h4 class="text-white">ล็อกอินเข้าสู่ระบบ</h4>
                 </div>
