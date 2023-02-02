@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include_once('../config/dbcon.php'); ?>
 
 <?php
@@ -32,7 +34,7 @@ if (isset($_POST['register_btn'])) {
             VALUES ('$name', '$email', '$password', '$phone', '$filename', '$address', '$active', '$role_as')";
             $insert_query_run = mysqli_query($con,$insert_query);
             if($insert_query_run){
-                move_uploaded_file($_FILES['photo']['tmp_name'],'../upload/users'.$filename);
+                move_uploaded_file($_FILES['photo']['tmp_name'],'./upload/users'.$filename);
                 $_SESSION['message'] = 'ลงทะเบียนเรียบร้อยแล้ว';
                 print("ลงทะเบียนเรียบร้อยแล้ว");
                 header('Location: ../register.php');

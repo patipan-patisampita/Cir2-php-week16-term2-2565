@@ -1,8 +1,13 @@
+<?php session_start(); ?>
+
 <?php include_once("includes/header.php"); ?>
 <?php include_once("includes/navbar.php"); ?>
 
 <div class="container my-3">
     <div class="card shadow">
+        
+        <?php include_once('message.php'); ?>
+
         <div class="card-header bg-success">
             <h3 class="text-white">ระบบลงทะเบียนสมัครสมาชิก</h3>
         </div>
