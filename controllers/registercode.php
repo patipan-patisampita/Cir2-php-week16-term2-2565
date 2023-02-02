@@ -17,28 +17,40 @@ if (isset($_POST['register_btn'])) {
 
     $active = $_POST['active'] == true ? 1 : '0';
 
-    if($password == $confirm_password){
+    if ($password == $confirm_password) {
         //Check Email
         $check_email = "SELECT * FROM users WHERE email = '$email'";
-        $check_email_run = mysqli_query($con,$check_email);
-        if(mysqli_num_rows($check_email_run)>0){
+        $check_email_run = mysqli_query($con, $check_email);
+        if (mysqli_num_rows($check_email_run) > 0) {
             //มีอีเมลล์ใช้แล้ว
             $_SESSION['message'] = 'อีเมลล์นี้ถูกใช้แล้ว';
             print("อีเมลล์นี้ถูกใช้แล้ว");
             header('Location: ../register.php');
             exit(0);
-        }else{
+        } else {
             $insert_query = "INSERT INTO users (name, email, password, phone, photo, address, active, role_as) 
             VALUES ('$name', '$email', '$password', '$phone', '$filename', '$address', '$active', '$role_as')";
+            $insert_query_run = mysqli_query($con,$insert_query);
+            if($insert_query_run){
+                move_uploaded_file($_FILES['photo']['tmp_name'],'../upload/users'.$filename);
+                $_SESSION['message'] = 'ลงทะเบียนเรียบร้อยแล้ว';
+                print("ลงทะเบียนเรียบร้อยแล้ว");
+                header('Location: ../register.php');
+                exit(0);
+            }else{
+                $_SESSION['message'] = 'ลงทะเบียนไม่ผ่าน';
+                print("ลงทะเบียนเรียบร้อยแล้ว");
+                header('Location: ../register.php');
+                exit(0);
+            }
+
         }
-    }
-    else{
+    } else {
         $_SESSION['message'] = 'รหัสผ่านไม่ตรงกัน';
         print("รหัสผ่านไม่ตรงกัน");
         header('Location: ../register.php');
         exit(0);
     }
-
 } else {
     $_SESSION['message'] = 'ข้อมูลส่งมามีปัญหา';
     print('ข้อมูลส่งมามีปัญหา');
