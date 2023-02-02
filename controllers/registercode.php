@@ -16,6 +16,7 @@ if (isset($_POST['register_btn'])) {
     $filename = time() . '.' . $photo_extension;
 
     $active = $_POST['active'] == true ? 1 : '0';
+
     if($password == $confirm_password){
         //Check Email
         $check_email = "SELECT * FROM users WHERE email = '$email'";
@@ -27,7 +28,8 @@ if (isset($_POST['register_btn'])) {
             header('Location: ../register.php');
             exit(0);
         }else{
-            $query = "";
+            $insert_query = "INSERT INTO users (name, email, password, phone, photo, address, active, role_as) 
+            VALUES ('$name', '$email', '$password', '$phone', '$filename', '$address', '$active', '$role_as')";
         }
     }
     else{
